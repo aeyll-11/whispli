@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import PageTreeItem from '../PageTreeItem.vue';
 
-describe('NavBar', () => {
+describe('PageTreeItem', () => {
   it('should display children on click event', async () => {
     const data = {
       id: '3',
