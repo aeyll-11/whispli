@@ -26,7 +26,17 @@ const toggle = (): void => {
 </script>
 
 <template>
-  <ul></ul>
+  <ul>
+    <li @click="toggle" :style="hasChildren ? 'cursor:pointer' : ''">
+      <span>
+        {{ isOpen ? '▼' : icon }}
+      </span>
+      {{ props.data.name }}
+    </li>
+    <template v-if="$props.data.children && isOpen">
+      <PageTreeItem v-for="item in $props.data.children" :data="item" :key="item.id" />
+    </template>
+  </ul>
 </template>
 
 <style scoped>
