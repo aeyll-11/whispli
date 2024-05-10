@@ -1,8 +1,4 @@
-export interface Data {
-  id: string;
-  name: string;
-  children?: Data[];
-}
+import type { Data } from '@/interfaces/data.interface';
 
 const data: Data[] = [
   {
