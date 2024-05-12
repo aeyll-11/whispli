@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NavBar > should display children on click event 1`] = `
+exports[`PageTreeItem > should display children on click event 1`] = `
 "<ul data-v-0920cad7="">
   <li data-v-0920cad7="" style="cursor: pointer;"><span data-v-0920cad7="">▼</span> Office Events</li>
   <ul data-v-0920cad7="">

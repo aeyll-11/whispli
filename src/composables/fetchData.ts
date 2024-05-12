@@ -1,4 +1,34 @@
 import type { Data } from '@/interfaces/data.interface';
+import { ref } from 'vue';
+
+export const useData = () => {
+  const isLoading = ref<boolean>(false);
+
+  const items = ref<Data[]>();
+
+  /**
+   * Responsible for fetching data
+   */
+  const fetchData = async (): Promise<void> => {
+    isLoading.value = true;
+
+    try {
+      const response = await new Promise<Data[]>((resolve) => {
+        setTimeout(resolve, 500, data);
+      });
+
+      items.value = response;
+    } finally {
+      isLoading.value = false;
+    }
+  };
+
+  return {
+    isLoading,
+    fetchData,
+    items
+  };
+};
 
 const data: Data[] = [
   {
@@ -62,14 +92,3 @@ const data: Data[] = [
     name: 'Vacations and Sick Leaves'
   }
 ];
-
-/**
- * Responsible for fetching data
- */
-function fetchData(): Promise<Data[]> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 100, data);
-  });
-}
-
-export { fetchData };

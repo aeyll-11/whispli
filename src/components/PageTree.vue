@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import { fetchData } from '@/composables/fetchData';
-import type { Data } from '@/interfaces/data.interface';
-import { onMounted, ref } from 'vue';
+import { useData } from '@/composables/fetchData';
+import { onMounted } from 'vue';
 import PageTreeItem from './PageTreeItem.vue';
-const items = ref<Data[]>([]);
+
+const { fetchData, isLoading, items } = useData();
 
 onMounted(async () => {
-  items.value = await fetchData();
+  await fetchData();
 });
 </script>
 
 <template>
-  <div>
+  <div v-if="!isLoading">
     <PageTreeItem v-for="item in items" :data="item" :key="item.id" />
   </div>
+  <div v-else>...Loading</div>
 </template>
